@@ -10,7 +10,7 @@ namespace Application.Quizzes
 {
     public class List
     {
-        public class Query : IRequest<List<Quiz>>{ }
+        public class Query : IRequest<List<Quiz>> {}
 
         public class Handler : IRequestHandler<Query, List<Quiz>>
         {

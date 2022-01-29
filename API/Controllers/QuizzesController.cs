@@ -10,10 +10,11 @@ namespace API.Controllers
     {
        
         [HttpGet]
-    public async Task<ActionResult<List<Quiz>>> GetQuizzes()
+        public async Task<ActionResult<List<Quiz>>> GetQuizzes()
         {
             return await Mediator.Send(new List.Query());
         }
+        
         [HttpGet("{id}")] // quizzes/id
         public async Task<ActionResult<Quiz>> GetQuiz(Guid id)
         {

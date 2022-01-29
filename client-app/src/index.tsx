@@ -1,9 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import 'semantic-ui-css/semantic.min.css';
-import './layout/style.css';
-import App from './layout/App';
+import ReactDOM from 'react-dom';
+import './app/layout/Styles.css';
+import App from './app/layout/App';
 import reportWebVitals from './reportWebVitals';
+
 
 ReactDOM.render(
   <App />,
