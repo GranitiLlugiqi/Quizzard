@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,8 +26,8 @@ namespace API
            var services = scope.ServiceProvider;
            try{
                var context = services.GetRequiredService<DataContext>();
-               await context.Database.MigrateAsync();
-               await QuizSeed.SeedData(context);
+               var userManager = services.GetRequiredService<UserManager<Player>>();
+               await QuizSeed.SeedData(context,userManager);
                await QuestionSeed.SeedData(context);
                await OptionSeed.SeedData(context);
                await CategorySeed.SeedData(context);
