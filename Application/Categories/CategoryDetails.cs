@@ -6,26 +6,26 @@ using Domain;
 using MediatR;
 using Persistence;
 
-namespace Application.Questions
+namespace Application.Categories
 {
-    public class QuestionDetails
+    public class CategoryDetails
     {
-        public class Query : IRequest<Question>
+        public class Query : IRequest<Category>
         {
           public Guid Id {get; set;}
            
         }
 
-        public class Handler : IRequestHandler<Query, Question>
+        public class Handler : IRequestHandler<Query, Category>
         {
             private readonly DataContext _context;
             public Handler(DataContext context)
             {
                 _context = context;
             }
-            public async Task<Question> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<Category> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _context.Questions.FindAsync(request.Id);
+                return await _context.Categories.FindAsync(request.Id);
             }
         }
     }

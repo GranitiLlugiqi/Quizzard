@@ -35,6 +35,8 @@ namespace Persistence
             builder.Entity<Category>()
             .HasMany(c => c.Quizzes)
             .WithOne(e => e.Category);
+
+        
            
            builder.Entity<Quiz>()
             .HasMany(c => c.Questions)

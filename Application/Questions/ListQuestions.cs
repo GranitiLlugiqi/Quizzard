@@ -8,9 +8,9 @@ using Persistence;
 
 namespace Application.Questions
 {
-    public class List
+    public class ListQuestions
     {
-        public class Query :IRequest<List<Question>>{}
+        public class Query : IRequest<List<Question>> {}
 
         public class Handler : IRequestHandler<Query, List<Question>>
         {
@@ -18,10 +18,11 @@ namespace Application.Questions
             public Handler(DataContext context)
             {
                 _context = context;
+
             }
             public async Task<List<Question>> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _context.Questions.ToListAsync();
+               return await _context.Questions.ToListAsync();
             }
         }
     }

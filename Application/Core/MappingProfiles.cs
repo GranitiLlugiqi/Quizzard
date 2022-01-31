@@ -9,6 +9,9 @@ namespace Application.Core
         {
             CreateMap<Quiz, Quiz>();
             CreateMap<Question, Question>();
+            CreateMap<Category, Category>();
+            CreateMap<Option, Option>();
+
         }
     }
 }
