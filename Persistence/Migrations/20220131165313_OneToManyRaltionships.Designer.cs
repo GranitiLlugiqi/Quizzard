@@ -9,8 +9,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220131135027_EditDataAndRelationships5")]
-    partial class EditDataAndRelationships5
+    [Migration("20220131165313_OneToManyRaltionships")]
+    partial class OneToManyRaltionships
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,7 +34,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Option", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("OptionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
@@ -44,10 +44,10 @@ namespace Persistence.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("QuestionId")
+                    b.Property<Guid>("QuestionId")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("OptionId");
 
                     b.HasIndex("QuestionId");
 
@@ -133,7 +133,7 @@ namespace Persistence.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("QuizId")
+                    b.Property<Guid>("QuizId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -149,7 +149,7 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("CategoryId")
+                    b.Property<Guid>("CategoryId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
@@ -316,23 +316,35 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Option", b =>
                 {
-                    b.HasOne("Domain.Question", null)
+                    b.HasOne("Domain.Question", "Question")
                         .WithMany("Options")
-                        .HasForeignKey("QuestionId");
+                        .HasForeignKey("QuestionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Question");
                 });
 
             modelBuilder.Entity("Domain.Question", b =>
                 {
-                    b.HasOne("Domain.Quiz", null)
+                    b.HasOne("Domain.Quiz", "Quiz")
                         .WithMany("Questions")
-                        .HasForeignKey("QuizId");
+                        .HasForeignKey("QuizId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Quiz");
                 });
 
             modelBuilder.Entity("Domain.Quiz", b =>
                 {
-                    b.HasOne("Domain.Category", null)
-                        .WithMany("Quiz")
-                        .HasForeignKey("CategoryId");
+                    b.HasOne("Domain.Category", "Category")
+                        .WithMany("Quizzes")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("Domain.QuizPlayer", b =>
@@ -407,7 +419,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Category", b =>
                 {
-                    b.Navigation("Quiz");
+                    b.Navigation("Quizzes");
                 });
 
             modelBuilder.Entity("Domain.Player", b =>

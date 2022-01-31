@@ -32,8 +32,23 @@ namespace Persistence
             .WithMany(q => q.Players)
             .HasForeignKey(qp => qp.QuizId);
 
+            builder.Entity<Category>()
+            .HasMany(c => c.Quizzes)
+            .WithOne(e => e.Category);
+           
+           builder.Entity<Quiz>()
+            .HasMany(c => c.Questions)
+            .WithOne(e => e.Quiz);
+
+            builder.Entity<Question>()
+            .HasMany(c => c.Options)
+            .WithOne(e => e.Question);
+
+
             
         }
+    
+        
 
 
     }

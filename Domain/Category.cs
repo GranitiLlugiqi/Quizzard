@@ -7,6 +7,6 @@ namespace Domain
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public ICollection<Quiz> Quiz {get;set;}
+        public ICollection<Quiz> Quizzes {get;set;}
     }
 }

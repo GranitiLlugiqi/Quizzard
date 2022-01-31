@@ -12,5 +12,9 @@ namespace Domain
         public ICollection<QuizPlayer> Players {get;set;}
         public List<Question> Questions {get;set;}
 
+        public Guid CategoryId{get;set;}
+
+        public Category Category{get; set;}
+
     }
 }

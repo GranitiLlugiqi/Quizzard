@@ -15,7 +15,8 @@ namespace Persistence.Seed
             {
                 new Category
                 {
-                    Name="Math"
+                    Name="Math",
+                    
                 },
                  new Category
                 {

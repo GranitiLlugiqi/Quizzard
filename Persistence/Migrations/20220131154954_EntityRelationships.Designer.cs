@@ -9,8 +9,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220130234318_QuizRelationships")]
-    partial class QuizRelationships
+    [Migration("20220131154954_EntityRelationships")]
+    partial class EntityRelationships
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,7 +34,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Option", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("OptionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
@@ -47,7 +47,7 @@ namespace Persistence.Migrations
                     b.Property<Guid>("QuestionId")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("OptionId");
 
                     b.HasIndex("QuestionId");
 
