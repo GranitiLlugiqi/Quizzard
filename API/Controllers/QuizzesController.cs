@@ -4,11 +4,14 @@ using System.Threading.Tasks;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Application.Quizzes;
+using Microsoft.AspNetCore.Authorization;
+
 namespace API.Controllers
 {
+    [AllowAnonymous]
     public class QuizzesController : BaseApiController
-    {
-       
+    {  
+        
         [HttpGet]
         public async Task<ActionResult<List<Quiz>>> GetQuizzes()
         {
@@ -20,6 +23,7 @@ namespace API.Controllers
         {
             return await Mediator.Send(new Details.Query{Id = id});
         }
+        
 
         [HttpPost]
         public async Task<IActionResult> CreateQuiz(Quiz quiz)

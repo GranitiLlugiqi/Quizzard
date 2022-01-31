@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Container, Icon, Menu } from 'semantic-ui-react';
+import { Button, Container,  Icon, Menu } from 'semantic-ui-react';
 
 export default function NavBar() {
     return (

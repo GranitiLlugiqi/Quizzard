@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220131123924_EditDataAndRelationships2")]
+    partial class EditDataAndRelationships2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -18,21 +20,21 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Category", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("CategoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Domain.Option", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("OptionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
@@ -45,7 +47,7 @@ namespace Persistence.Migrations
                     b.Property<Guid?>("QuestionId")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("OptionId");
 
                     b.HasIndex("QuestionId");
 
@@ -124,7 +126,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Question", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("QuestionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
@@ -134,7 +136,7 @@ namespace Persistence.Migrations
                     b.Property<Guid?>("QuizId")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("QuestionId");
 
                     b.HasIndex("QuizId");
 
@@ -314,23 +316,29 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Option", b =>
                 {
-                    b.HasOne("Domain.Question", null)
+                    b.HasOne("Domain.Question", "Question")
                         .WithMany("Options")
                         .HasForeignKey("QuestionId");
+
+                    b.Navigation("Question");
                 });
 
             modelBuilder.Entity("Domain.Question", b =>
                 {
-                    b.HasOne("Domain.Quiz", null)
+                    b.HasOne("Domain.Quiz", "Quiz")
                         .WithMany("Questions")
                         .HasForeignKey("QuizId");
+
+                    b.Navigation("Quiz");
                 });
 
             modelBuilder.Entity("Domain.Quiz", b =>
                 {
-                    b.HasOne("Domain.Category", null)
+                    b.HasOne("Domain.Category", "Category")
                         .WithMany("Quiz")
                         .HasForeignKey("CategoryId");
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("Domain.QuizPlayer", b =>

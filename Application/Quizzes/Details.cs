@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Domain;
@@ -12,6 +13,7 @@ namespace Application.Quizzes
         public class Query : IRequest<Quiz>
         {
           public Guid Id {get; set;}
+           
         }
 
         public class Handler : IRequestHandler<Query, Quiz>

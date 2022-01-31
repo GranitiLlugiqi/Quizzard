@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220130221738_QuizPlayer")]
+    partial class QuizPlayer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,12 +44,7 @@ namespace Persistence.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("QuestionId")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("QuestionId");
 
                     b.ToTable("Options");
                 });
@@ -131,12 +128,7 @@ namespace Persistence.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("QuizId")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("QuizId");
 
                     b.ToTable("Questions");
                 });
@@ -147,9 +139,6 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid?>("CategoryId")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
@@ -157,8 +146,6 @@ namespace Persistence.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.ToTable("Quizzes");
                 });
@@ -312,27 +299,6 @@ namespace Persistence.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Domain.Option", b =>
-                {
-                    b.HasOne("Domain.Question", null)
-                        .WithMany("Options")
-                        .HasForeignKey("QuestionId");
-                });
-
-            modelBuilder.Entity("Domain.Question", b =>
-                {
-                    b.HasOne("Domain.Quiz", null)
-                        .WithMany("Questions")
-                        .HasForeignKey("QuizId");
-                });
-
-            modelBuilder.Entity("Domain.Quiz", b =>
-                {
-                    b.HasOne("Domain.Category", null)
-                        .WithMany("Quiz")
-                        .HasForeignKey("CategoryId");
-                });
-
             modelBuilder.Entity("Domain.QuizPlayer", b =>
                 {
                     b.HasOne("Domain.Player", "Player")
@@ -403,26 +369,14 @@ namespace Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Domain.Category", b =>
-                {
-                    b.Navigation("Quiz");
-                });
-
             modelBuilder.Entity("Domain.Player", b =>
                 {
                     b.Navigation("Quizzes");
                 });
 
-            modelBuilder.Entity("Domain.Question", b =>
-                {
-                    b.Navigation("Options");
-                });
-
             modelBuilder.Entity("Domain.Quiz", b =>
                 {
                     b.Navigation("Players");
-
-                    b.Navigation("Questions");
                 });
 #pragma warning restore 612, 618
         }

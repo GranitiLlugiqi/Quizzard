@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220131124836_EditDataAndRelationships3")]
+    partial class EditDataAndRelationships3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -314,23 +316,29 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Option", b =>
                 {
-                    b.HasOne("Domain.Question", null)
+                    b.HasOne("Domain.Question", "Question")
                         .WithMany("Options")
                         .HasForeignKey("QuestionId");
+
+                    b.Navigation("Question");
                 });
 
             modelBuilder.Entity("Domain.Question", b =>
                 {
-                    b.HasOne("Domain.Quiz", null)
+                    b.HasOne("Domain.Quiz", "Quiz")
                         .WithMany("Questions")
                         .HasForeignKey("QuizId");
+
+                    b.Navigation("Quiz");
                 });
 
             modelBuilder.Entity("Domain.Quiz", b =>
                 {
-                    b.HasOne("Domain.Category", null)
+                    b.HasOne("Domain.Category", "Category")
                         .WithMany("Quiz")
                         .HasForeignKey("CategoryId");
+
+                    b.Navigation("Category");
                 });
 
             modelBuilder.Entity("Domain.QuizPlayer", b =>

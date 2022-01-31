@@ -14,5 +14,27 @@ namespace Persistence
         public DbSet<Question> Questions{get;set;}
         public DbSet<Option> Options{get;set;}
         public DbSet<Category> Categories{get;set;}
+        
+        public DbSet<QuizPlayer> QuizPlayers{get;set;}
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<QuizPlayer>(x => x.HasKey(qp => new {qp.PlayerId, qp.QuizId}));
+
+            builder.Entity<QuizPlayer>()
+            .HasOne(u => u.Player)
+            .WithMany(q => q.Quizzes)
+            .HasForeignKey(qp => qp.PlayerId);
+
+             builder.Entity<QuizPlayer>()
+            .HasOne(u => u.Quiz)
+            .WithMany(q => q.Players)
+            .HasForeignKey(qp => qp.QuizId);
+
+            
+        }
+
+
     }
 }
