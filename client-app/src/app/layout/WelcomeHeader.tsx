@@ -1,12 +1,12 @@
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
-import { Button, Grid, Icon } from 'semantic-ui-react';
+
+import { Button, Grid, GridColumn, Icon } from 'semantic-ui-react';
 
 export default function WelcomeHeader() {
     return(
-    <Grid className='Homepage'>
-      <Row>
-      <Col>
+    <Grid className='Homepage' divided='vertically'>
+      <Grid.Row columns={2}>
+      <GridColumn>
         <h1 >Welcome to <b>QUIZZARD</b></h1>
         <h2>Want to create and play your personal quizzes? </h2>
         <p>You can do it with Quizzards create your quizzes, play,
@@ -19,11 +19,11 @@ export default function WelcomeHeader() {
             <Icon name = 'play'/>
             Play Quiz
         </Button>
-        </Col>
-    <Col>
-      <img className='space' src='/assets/Homepage1.png' alt="Failed to load" width='500px' height={300} />
-    </Col>
-    </Row>
+        </GridColumn>
+    <GridColumn>
+      <img className='space' src='/assets/Homepageimage2.png' alt="Failed to load" width='500px' height='300px' />
+    </GridColumn>
+    </Grid.Row>
   </Grid>
     )
 }

@@ -20,7 +20,7 @@ namespace API.Controllers
         }
         
         [HttpGet("{id}")] // quizzes/id
-        public async Task<ActionResult<Category>> GetCategory(Guid id)
+        public async Task<ActionResult<Category>> GetCategory(int id)
         {
             return await Mediator.Send(new CategoryDetails.Query{Id = id});
         }
@@ -34,14 +34,14 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> EditCategory(Guid id,Category category)
+        public async Task<IActionResult> EditCategory(int id,Category category)
         {
         category.Id= id;
             return Ok(await Mediator.Send(new EditCategory.Command{Category = category}));
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCategory(Guid id)
+        public async Task<IActionResult> DeleteCategory(int id)
         {
              return Ok(await Mediator.Send(new DeleteCategory.Command{Id = id}));
         }

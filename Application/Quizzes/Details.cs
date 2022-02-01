@@ -12,7 +12,7 @@ namespace Application.Quizzes
     {
         public class Query : IRequest<Quiz>
         {
-          public Guid Id {get; set;}
+          public int Id {get; set;}
            
         }
 

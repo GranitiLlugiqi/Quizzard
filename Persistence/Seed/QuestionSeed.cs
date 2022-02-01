@@ -15,32 +15,88 @@ namespace Persistence.Seed
             {
                 new Question
                 {
-                    Description="Who is the capital of Kosovo?",
+                    QuestionDescription="Who is the capital of Kosovo?",
+                    Option1="Pristina",
+                    Answer1= true,
+                    Option2="Tirana",
+                    Answer2 = false,
+                    Option3="Madrid",
+                    Answer3 = false,
+                    Option4="London",
+                    Answer4= false,
+                   
                 },
                  new Question
                 {
-                    Description="Who is the capital of Albania?",
+                    QuestionDescription="Who is the capital of Albania?",
+                     Option1="Belgrade",
+                    Answer1= false,
+                    Option2="Tirana",
+                    Answer2= true,
+                    Option3="Berlin",
+                    Answer3= false,
+                    Option4="Bern",
+                    Answer4 = false,
+                    
                 },
                  new Question
                 {
-                    Description="Who is the capital of France?",
+                   QuestionDescription="Who is the capital of France?",
+                    Option1="Sofia",
+                    Answer1= false,
+                    Option3="Skopje",
+                    Answer3= false,
+                    Option4="Lisbona",
+                    Answer4= false,
+                    Option2="Paris",
+                    Answer2= true,
+                     
                 },
                 new Question
                 {
-                    Description="How many planets are in our Solar System?",
+                    QuestionDescription="How many planets are in our Solar System?",
+                    Option1="5",
+                    Answer1= false,
+                    Option2="6",
+                    Answer2= false,
+                    Option3="9",
+                    Answer3= true,
+                    Option4="10",
+                    Answer4= false,
+                     
                 },
                  new Question
                 {
-                    Description="Which is the largest planet in our Solar System?",
+                    QuestionDescription="Which is the largest planet in our Solar System?",
+                    Option1="Saturn",
+                    Answer1= false,
+                    Option2="Jupiter",
+                    Answer2= true,
+                    Option3="Pluto",
+                    Answer3= false,
+                    Option4="Neptun",
+                    Answer4= false,
+                     
                 },
                  new Question
                 {
-                    Description="What's the name of the satellite of planet Earth?",
+                    QuestionDescription="What's the name of the satellite of planet Earth?",
+                     Option1="Moon",
+                    Answer1= true,
+                    Option3="Venus",
+                    Answer3= false,
+                    Option2="Charon",
+                    Answer2= false,
+                    Option4="Mercury",
+                    Answer4= false,
+                    
+                    
                 }
             };
              await context.Questions.AddRangeAsync(questions);
-                await context.SaveChangesAsync();
-
+             await context.SaveChangesAsync();
+           
+ 
         }
     }
 }

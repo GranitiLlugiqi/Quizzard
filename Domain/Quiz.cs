@@ -5,16 +5,15 @@ namespace Domain
 {
     public class Quiz
     {
-        public Guid Id { get; set; }
+        public int Id {get;set;}
+
         public string Title { get; set; }
+
         public string Description {get;set;}
+
+        public string Picture {get; set;}
+        public ICollection<Question> Questions{get;set;}
         
-        public ICollection<QuizPlayer> Players {get;set;}
-        public List<Question> Questions {get;set;}
-
-        public Guid CategoryId{get;set;}
-
-        public Category Category{get; set;}
-
+        
     }
 }

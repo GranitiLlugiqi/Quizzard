@@ -1,7 +1,6 @@
 import React from 'react';
 import 'semantic-ui-react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-bootstrap';
+import 'semantic-ui-css/semantic.min.css';
 import ReactDOM from 'react-dom';
 import './app/layout/Styles.css';
 import App from './app/layout/App';

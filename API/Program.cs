@@ -29,8 +29,8 @@ namespace API
                var userManager = services.GetRequiredService<UserManager<Player>>();
                await QuizSeed.SeedData(context,userManager);
                await QuestionSeed.SeedData(context);
-               await OptionSeed.SeedData(context);
                await CategorySeed.SeedData(context);
+              
 
            }catch (Exception ex)
            {

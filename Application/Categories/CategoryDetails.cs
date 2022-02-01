@@ -12,7 +12,7 @@ namespace Application.Categories
     {
         public class Query : IRequest<Category>
         {
-          public Guid Id {get; set;}
+          public int Id {get; set;}
            
         }
 

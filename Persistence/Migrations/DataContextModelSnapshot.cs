@@ -18,9 +18,9 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Category", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
@@ -28,28 +28,6 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("Domain.Option", b =>
-                {
-                    b.Property<Guid>("OptionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("Answer")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("QuestionId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("OptionId");
-
-                    b.HasIndex("QuestionId");
-
-                    b.ToTable("Options");
                 });
 
             modelBuilder.Entity("Domain.Player", b =>
@@ -124,15 +102,39 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Question", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Answer1")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Answer2")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Answer3")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Answer4")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Option1")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Option2")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("QuizId")
+                    b.Property<string>("Option3")
                         .HasColumnType("TEXT");
+
+                    b.Property<string>("Option4")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("QuestionDescription")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("QuizId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -143,14 +145,17 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Quiz", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("INTEGER");
 
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("TEXT");
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Picture")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
@@ -161,27 +166,6 @@ namespace Persistence.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Quizzes");
-                });
-
-            modelBuilder.Entity("Domain.QuizPlayer", b =>
-                {
-                    b.Property<string>("PlayerId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("QuizId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsCreator")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("score")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("PlayerId", "QuizId");
-
-                    b.HasIndex("QuizId");
-
-                    b.ToTable("QuizPlayers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -312,56 +296,18 @@ namespace Persistence.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Domain.Option", b =>
-                {
-                    b.HasOne("Domain.Question", "Question")
-                        .WithMany("Options")
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Question");
-                });
-
             modelBuilder.Entity("Domain.Question", b =>
                 {
-                    b.HasOne("Domain.Quiz", "Quiz")
+                    b.HasOne("Domain.Quiz", null)
                         .WithMany("Questions")
-                        .HasForeignKey("QuizId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Quiz");
+                        .HasForeignKey("QuizId");
                 });
 
             modelBuilder.Entity("Domain.Quiz", b =>
                 {
-                    b.HasOne("Domain.Category", "Category")
+                    b.HasOne("Domain.Category", null)
                         .WithMany("Quizzes")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("Domain.QuizPlayer", b =>
-                {
-                    b.HasOne("Domain.Player", "Player")
-                        .WithMany("Quizzes")
-                        .HasForeignKey("PlayerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Quiz", "Quiz")
-                        .WithMany("Players")
-                        .HasForeignKey("QuizId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Player");
-
-                    b.Navigation("Quiz");
+                        .HasForeignKey("CategoryId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -420,20 +366,8 @@ namespace Persistence.Migrations
                     b.Navigation("Quizzes");
                 });
 
-            modelBuilder.Entity("Domain.Player", b =>
-                {
-                    b.Navigation("Quizzes");
-                });
-
-            modelBuilder.Entity("Domain.Question", b =>
-                {
-                    b.Navigation("Options");
-                });
-
             modelBuilder.Entity("Domain.Quiz", b =>
                 {
-                    b.Navigation("Players");
-
                     b.Navigation("Questions");
                 });
 #pragma warning restore 612, 618

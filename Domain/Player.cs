@@ -6,11 +6,14 @@ namespace  Domain
 {
     public class Player : IdentityUser
     {
+        
 
         public string DisplayName{get;set;}
 
         public string Bio {get; set;}
-         public ICollection<QuizPlayer> Quizzes {get;set;}
+
+      
+        
 
     }
 }
