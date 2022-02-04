@@ -10,17 +10,3 @@ export interface Question {
         option4: string;
         answer4: boolean;
     }
-export interface Quiz {
-        id: number;
-        title: string;
-        description: string;
-        picture: string;
-        questions: Question[];
-    }
-    export interface Category {
-        id: number;
-        name: string;
-        quizzes: Quiz[];
-    }
-
-

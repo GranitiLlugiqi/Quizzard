@@ -27,6 +27,7 @@ namespace API
            try{
                var context = services.GetRequiredService<DataContext>();
                var userManager = services.GetRequiredService<UserManager<Player>>();
+               await context.Database.MigrateAsync();
                await QuizSeed.SeedData(context,userManager);
                await QuestionSeed.SeedData(context);
                await CategorySeed.SeedData(context);

@@ -12,7 +12,9 @@ namespace Domain
         public string Description {get;set;}
 
         public string Picture {get; set;}
-        public ICollection<Question> Questions{get;set;}
+        public ICollection<Question> Questions{get;set;}= new List<Question>();
+
+       
         
         
     }

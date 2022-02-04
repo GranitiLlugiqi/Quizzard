@@ -15,6 +15,7 @@ namespace Persistence.Seed
             {
                 new Question
                 {
+                    Id=1,
                     QuestionDescription="Who is the capital of Kosovo?",
                     Option1="Pristina",
                     Answer1= true,
@@ -28,6 +29,7 @@ namespace Persistence.Seed
                 },
                  new Question
                 {
+                    Id=2,
                     QuestionDescription="Who is the capital of Albania?",
                      Option1="Belgrade",
                     Answer1= false,
@@ -41,6 +43,7 @@ namespace Persistence.Seed
                 },
                  new Question
                 {
+                    Id=3,
                    QuestionDescription="Who is the capital of France?",
                     Option1="Sofia",
                     Answer1= false,
@@ -53,7 +56,8 @@ namespace Persistence.Seed
                      
                 },
                 new Question
-                {
+                {  
+                    Id=4,
                     QuestionDescription="How many planets are in our Solar System?",
                     Option1="5",
                     Answer1= false,
@@ -67,6 +71,7 @@ namespace Persistence.Seed
                 },
                  new Question
                 {
+                    Id=5,
                     QuestionDescription="Which is the largest planet in our Solar System?",
                     Option1="Saturn",
                     Answer1= false,
@@ -80,6 +85,7 @@ namespace Persistence.Seed
                 },
                  new Question
                 {
+                    Id=6,
                     QuestionDescription="What's the name of the satellite of planet Earth?",
                      Option1="Moon",
                     Answer1= true,
@@ -89,6 +95,7 @@ namespace Persistence.Seed
                     Answer2= false,
                     Option4="Mercury",
                     Answer4= false,
+                    
                     
                     
                 }

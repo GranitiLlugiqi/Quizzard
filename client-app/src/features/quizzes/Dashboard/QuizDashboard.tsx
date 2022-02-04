@@ -1,21 +1,23 @@
-import { Grid } from "semantic-ui-react";
+import { Grid, GridColumn } from "semantic-ui-react";
 import React from 'react';
 import { Quiz } from '../../../app/models/quiz';
 import QuizList from "./QuizList";
-import QuizDetails from "../Details/QuizDetails";
+import QuizForm from "../form/QuizForm";
+
 
 interface Props{
     quizzes:Quiz[];
 }
 export default function QuizDashboard({quizzes}:Props){
     return(
-        <Grid>
-             <Grid.Column width='10'>
-             <QuizList quizzes={quizzes}/>
-             </Grid.Column>
-             <Grid.Column width='6'>
-               <QuizDetails quizzes={quizzes[0]}/>
-               </Grid.Column>
+        <Grid >
+             <GridColumn width='10' >
+             {quizzes[0] &&
+             <QuizList quizzes={quizzes}/>}
+             </GridColumn>
+             <GridColumn width='6'>
+                 <QuizForm />
+             </GridColumn>
              </Grid>
     )
 }

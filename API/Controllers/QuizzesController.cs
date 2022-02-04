@@ -21,8 +21,11 @@ namespace API.Controllers
         [HttpGet("{id}")] // quizzes/id
         public async Task<ActionResult<Quiz>> GetQuiz(int id)
         {
+            
             return await Mediator.Send(new Details.Query{Id = id});
         }
+       
+        
         
 
         [HttpPost]
@@ -36,6 +39,7 @@ namespace API.Controllers
         public async Task<IActionResult> EditQuiz(int id,Quiz quiz)
         {
             quiz.Id= id;
+            
             return Ok(await Mediator.Send(new Edit.Command{Quiz = quiz}));
         }
 

@@ -29,8 +29,7 @@ namespace API
         {
            _config = config;
         }
-
-        public IConfiguration Configuration { get; }
+                public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -41,6 +40,11 @@ namespace API
                 var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
                 opt.Filters.Add(new AuthorizeFilter(policy));
             });
+          //  .AddFluentValidation(config =>
+          //  {
+           //     config.RegisterValidatorsFromAssemblyContaining<Create>();
+           // });
+
            services.AddApplicationServices(_config);
            services.AddIdentityServices(_config);
         }

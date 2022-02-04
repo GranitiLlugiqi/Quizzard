@@ -1,28 +1,37 @@
 body {
-  background-image: linear-gradient(135deg,
-  rgb(77, 2, 252) 0%, 
-   rgb(38, 0, 141) 55%,
-    rgb(10, 0, 37) 70%) !important;
+  background-image: 
+  linear-gradient(90deg,
+  rgb(12, 0, 41) 0%, 
+   rgb(17, 0, 66) 25%,
+   rgb(26, 0, 97) 35%,
+   rgb(71, 9, 243) 45%,
+   rgb(141, 101, 252) 55%,
+   rgb(71, 9, 243) 65%,
+   rgb(26, 0, 97) 75%,
+    rgb(17, 0, 66) 85%,
+    rgb(12, 0, 41) 95%) !important;
  font-family:Courier New,monospace;
+}
+.cont{
+  background-image: linear-gradient(180deg,
+ rgb(42, 0, 139)0%,
+ rgb(28, 0, 105) 79%,
+ #050013 89%) !important;
+ 
 }
 
 .ui.inverted.top.fixed.menu{
-  background-image: linear-gradient(135deg,
-  rgb(77, 2, 252) 0%, 
-   rgb(38, 0, 141) 60%,
-    rgb(10, 0, 37) 90%) !important;
+  background-image: linear-gradient(90deg,
+  rgb(8, 0, 27) 30%, 
+   rgb(122, 84, 228) 60%,
+    rgb(21, 11, 48) 80%) !important;
   font-family:Courier New,monospace;
   font-size: 15px;
 }
-.Homepage{
- background-image: linear-gradient(90deg,
- rgb(77, 2, 252)0%,
- rgb(38, 0, 141) 79%,
- rgb(10, 0, 37) 89%) !important;
- margin-top: 7em;
-}
+
 .space{
-  border: 5px solid  violet;
+ 
+  margin-left:60px;
 
 }
 h1{
@@ -30,18 +39,62 @@ h1{
   color:white;
   font-size: 40px;
 }
-h2{
+.textcolor{
   font-family: 'Courier New', Courier, monospace;
   color: white;
   font-size:20px
 }
 
+.ptextcolor{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+  color:white;
+  margin-left:5px;
+}
 p{
   font-family: 'Courier New', Courier, monospace;
   font-size: 20px;
   color:white;
+  margin-left:5px;
 }
-button{
+.buttonheader{
   font-family: 'Courier New', Courier, monospace;
 }
+
+.quizfeed{
+  border: 5px solid violet;
+  margin-right:5em;
+  width:650px;
+  height:100%;
+  
+}
+.quiztitle{
+  font-size: 30px;
+  margin-top:5px;
+  margin-left:5px;
+  font-weight:bolder;
+  color:rgba(219, 63, 219, 0.363);
+}
+.homepage1{
+  background-image: linear-gradient(-180deg,
+ rgb(42, 0, 139)0%,
+ rgb(16, 0, 59) 79%,
+ #050013 89%) !important;
+ border: 5px;
+}
+.homepage2{
+  background-image: linear-gradient(180deg,
+ rgb(42, 0, 139)0%,
+ rgb(16, 0, 59) 79%,
+ #050013 89%) !important;
+ border: 5px;
+}
+.quizpictures{
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 100%;
+
+}
+
 

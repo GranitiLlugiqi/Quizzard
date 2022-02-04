@@ -33,6 +33,7 @@ namespace Persistence.Seed
             {
                 new Quiz
                 {
+                    Id=1,
                     Title="Capitals of Europe Countries",
                     Description="Test your knowledge of how well you know European Countries",
                     Picture="geography",	
@@ -40,14 +41,15 @@ namespace Persistence.Seed
                 },
                 new Quiz
                 {
+                    Id=2,
                     Title="The Solar System",
                     Description="How well do you know what lays in our Solar System?",
                     Picture="astronomy",
                    
                 }
             };
-                await context.Quizzes.AddRangeAsync(quizzes);
-                await context.SaveChangesAsync();
+        await context.Quizzes.AddRangeAsync(quizzes);
+        await context.SaveChangesAsync();
                 
 
         }

@@ -18,10 +18,12 @@ namespace Application.Quizzes
             public Handler(DataContext context)
             {
                 _context = context;
-
-            }
+                 }
             public async Task<List<Quiz>> Handle(Query request, CancellationToken cancellationToken)
             {
+                var quizzes =await _context.Quizzes
+                .Include(q => q.Questions)
+                .ToListAsync();
                return await _context.Quizzes.ToListAsync();
             }
         }

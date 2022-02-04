@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Domain;
 using MediatR;
 using Persistence;
-using static Application.Quizzes.Create;
 
 namespace Application.Questions
 {

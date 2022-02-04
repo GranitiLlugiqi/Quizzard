@@ -27,7 +27,7 @@ namespace API.Controllers
         
 
         [HttpPost]
-        public async Task<IActionResult> CreateCateogry(Category category)
+        public async Task<IActionResult> CreateCateogory(Category category)
         {
             return Ok(await Mediator.Send(new CreateCategory.Command {Category = category}));
 

@@ -11,27 +11,19 @@ namespace Persistence
         public DataContext( DbContextOptions options) : base(options)
         {
         }
-
         public DbSet<Quiz> Quizzes{get;set;}
         public DbSet<Question> Questions{get;set;}
         public DbSet<Category> Categories{get;set;}
 
         
-        
-       
-
-          
         public class CategoryConfigurations : IEntityTypeConfiguration<Category>
         {
          public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.Property(p => p.Id).IsRequired();
             builder.Property(p =>p.Name).IsRequired().HasMaxLength(64);
-            
-            
         }
     }
-    
     public class QuizConfigurations : IEntityTypeConfiguration<Quiz>
     {
         public void Configure(EntityTypeBuilder<Quiz> builder)
@@ -40,13 +32,11 @@ namespace Persistence
             builder.Property(p => p.Title).IsRequired().HasMaxLength(64);
             builder.Property(p =>p.Description).IsRequired().HasMaxLength(128);
             builder.Property(p => p.Picture).IsRequired();
-          
-           
         }
     }
     public class QuestionConfigurations : IEntityTypeConfiguration<Question>
     {
-    public void Configure(EntityTypeBuilder<Question> builder)
+        public void Configure(EntityTypeBuilder<Question> builder)
         {
             builder.Property(p => p.Id).IsRequired();
             builder.Property(p =>p.QuestionDescription).IsRequired().HasMaxLength(128);
@@ -58,21 +48,7 @@ namespace Persistence
             builder.Property(p => p.Answer3).IsRequired();
             builder.Property(p => p.Option4).IsRequired().HasMaxLength(100);
             builder.Property(p => p.Answer4).IsRequired();
-           
-            
-
-            
             }
         }    
-   
-
-
-    
-     
-   
-    
-        
-
-
     }
 }

@@ -4,13 +4,17 @@ import { Button, Container,  Icon, Menu } from 'semantic-ui-react';
 export default function NavBar() {
     return (
         <Menu inverted fixed='top'>
+            
             <Container>
+            <div style={{marginRight:'10px'}}>
                 <Menu.Item header>
                     <img src="/assets/logo1.png" alt="logo" style={{marginRight: '10px'}}/>
                     Quizzard
                 </Menu.Item>
+                </div>
                 <Menu.Item name='Quizzes'/>
-                <Menu.Item>
+                
+                <Menu.Item style={{marginLeft:'48em'}}>
                 <Button icon labelPosition='left'  inverted color='green'size='huge'>
                   <Icon name = 'sign in'/>
                     Sign In
