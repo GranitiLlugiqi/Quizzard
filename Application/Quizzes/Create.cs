@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Domain;
+using FluentValidation;
 using MediatR;
 using Persistence;
 
@@ -12,6 +13,14 @@ namespace Application.Quizzes
         {
         public Quiz Quiz { get; set; }
         }
+         public class CommandValidator : AbstractValidator<Command>
+         {
+         public CommandValidator()
+         {
+             RuleFor(x => x.Quiz).SetValidator(new QuizValidator());
+         }
+         }
+
     
 
         public class Handler : IRequestHandler<Command>
