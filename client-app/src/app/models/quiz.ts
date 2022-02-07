@@ -15,7 +15,7 @@ export interface Quiz {
         title: string;
         description: string;
         picture: string;
-        questions: Question[];
+        questions?: Question[];
     }
     export interface Category {
         id: number;

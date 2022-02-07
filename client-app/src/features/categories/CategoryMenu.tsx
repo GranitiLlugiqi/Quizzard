@@ -1,6 +1,7 @@
 import { Button, ButtonGroup, Item, Segment } from "semantic-ui-react";
 import { Category } from "../../app/models/category";
 
+
 interface Props {
     categories: Category[];
   }

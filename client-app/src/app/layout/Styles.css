@@ -47,7 +47,7 @@ h1{
 
 .ptextcolor{
   font-family: 'Courier New', Courier, monospace;
-  font-size: 20px;
+  font-size: 15px;
   color:white;
   margin-left:5px;
 }
@@ -61,19 +61,20 @@ p{
   font-family: 'Courier New', Courier, monospace;
 }
 
-.quizfeed{
-  border: 5px solid violet;
-  margin-right:5em;
-  width:650px;
-  height:100%;
-  
+.QuizCards{
+  border: 5px solid purple;
+}
+
+.QuizForm{
+  border: 5px solid black;
+  padding: 5px;
 }
 .quiztitle{
-  font-size: 30px;
-  margin-top:5px;
+  font-size: 20px;
+  margin-top:10px;
   margin-left:5px;
-  font-weight:bolder;
-  color:rgba(219, 63, 219, 0.363);
+  font-weight:bold;
+  color:rgb(255, 255, 255);
 }
 .homepage1{
   background-image: linear-gradient(-180deg,
@@ -89,12 +90,55 @@ p{
  #050013 89%) !important;
  border: 5px;
 }
-.quizpictures{
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  width: 100%;
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200;
+  width: 370px;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: purple;
+}
 
+.container:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+.container {
+  position: relative;
+  width: 100%;
+}
+.image {
+  opacity: 1;
+  width: 370px;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+.formtitle{
+  margin-left:230px;
+}
+
+.QuizTitleSheet{
+  font-size: 20px;
+  margin-top:10px;
+  margin-left:5px;
+  font-weight:bold;
+  color:rgb(255, 255, 255);
+  border: 2px pink;
+  text-align: center;
 }
 
 

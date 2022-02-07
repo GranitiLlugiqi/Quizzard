@@ -1,47 +1,62 @@
 import React from "react";
-import { Button, Icon, Item, Segment } from "semantic-ui-react";
+import { Button, Container, Icon, Item, List, Segment } from "semantic-ui-react";
 import { Quiz } from "../../../app/models/quiz";
 
 interface Props {
   quizzes: Quiz[];
+  selectQuiz: (id: number) => void;
 }
 
-export default function QuizList({ quizzes }: Props) {
+export default function QuizList({ quizzes, selectQuiz}: Props) {
   return (
-    <Segment inverted color="violet">
-      <Item.Group devided font-family="Courier New,monospace">
+    <Segment horizontal inverted color="violet" >
+      <List horizontal>
+      <Item.Group devided font-family="Courier New,monospace"  border='5px'>
         {quizzes.map((quiz) => (
           <Item key={quiz.id}>
-            <Item.Content inverted>
-              <Item.Image
-                className="quizpictures"
-                size="big"
-                marginRight="10px"
-                src={`/assets/pictureImages/${quiz.picture}.jpg`}
-                style={{ display: "block", width: "100%", innerheight: "100%" }}
-              />
-
-              <Item.Header as="a">{quiz.title} </Item.Header>
-
-              <Item.Description>
-                <div className="ptextcolor">{quiz.description}</div>
-              </Item.Description>
-              <Item.Extra>
-                <Button
-                  icon
-                  labelPosition="right"
-                  inverted
-                  color="violet"
-                  size="huge"
+            <div className="QuizCards" >
+              <Item.Content inverted  >
+                
+                <div className="container">
+                  
+                  <Item.Image
+                  className="image"
+                  size="medium"
+                  marginRight="10px"
+                  src={`/assets/pictureImages/${quiz.picture}.jpg`}
+                  style={{ width: "370px", innerheight:"370px" }}
+                  />
+                  <div className="overlay">
+                    <div className="text">
+                      <Item.Description>{quiz.description}</Item.Description>
+                    </div>
+                  </div>
+                </div>
+                
+              <Item.Header
+                as="a">
+                <div  className="quiztitle" >
+                {quiz.title} 
+                </div>
+              </Item.Header>
+              <Item.Extra fluid>
+                <Button onClick={() => selectQuiz(quiz.id)}
+                fluid
+                icon
+                labelPosition="right"
+                color="pink"
+                size="huge"
                 >
-                  <Icon name="play" />
+                <Icon name="play"  />
                   Play Quiz
                 </Button>
               </Item.Extra>
-            </Item.Content>
+             </Item.Content>
+            </div>
           </Item>
         ))}
       </Item.Group>
+      </List>
     </Segment>
   );
 }

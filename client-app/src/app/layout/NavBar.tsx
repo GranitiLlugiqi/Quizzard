@@ -15,7 +15,7 @@ export default function NavBar() {
                 <Menu.Item name='Quizzes'/>
                 
                 <Menu.Item style={{marginLeft:'48em'}}>
-                <Button icon labelPosition='left'  inverted color='green'size='huge'>
+                <Button icon labelPosition='left'   color='teal'size='huge'>
                   <Icon name = 'sign in'/>
                     Sign In
                     </Button>
