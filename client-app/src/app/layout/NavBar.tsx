@@ -9,7 +9,7 @@ export default function NavBar() {
             <div style={{marginRight:'10px'}}>
                 <Menu.Item header>
                     <img src="/assets/logo1.png" alt="logo" style={{marginRight: '10px'}}/>
-                    Quizzard
+                    <div id="appname"><h2>Quizzard</h2></div>
                 </Menu.Item>
                 </div>
                 <Menu.Item name='Quizzes'/>

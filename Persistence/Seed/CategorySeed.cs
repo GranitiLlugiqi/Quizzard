@@ -41,6 +41,16 @@ namespace Persistence.Seed
                 {
                     Id=6,
                     Name="Tech"
+                },
+                 new Category
+                {
+                    Id=7,
+                    Name="Animals"
+                },
+                 new Category
+                {
+                    Id=8,
+                    Name="Movies"
                 }
             };
             await context.Categories.AddRangeAsync(categories);

@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Item, Segment } from "semantic-ui-react";
+import { Button, ButtonGroup, GridColumn, GridRow, Item,  Segment } from "semantic-ui-react";
 import { Category } from "../../app/models/category";
 
 
@@ -9,12 +9,22 @@ interface Props {
   export default function CategoryMenu({ categories }: Props) {
     return (
       <Segment inverted color="violet">
-      <ButtonGroup width='Category.length' devided font-family="Courier New,monospace">
+       
+      
+        
+          <ButtonGroup  className="categoriesbutton">
         {categories.map((category) => (
-           <Item key={category.id}></Item>
+           <Item  key={category.id}>
+      
+        <Button size='big' >{category.name}</Button>
+        
+        </Item>
+        
         ))}
-        <Button content={'${category.name'}></Button>
         </ButtonGroup>
+        
+         
+       
         </Segment>
     );
   }

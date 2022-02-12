@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container, Icon, Item, List, Segment } from "semantic-ui-react";
+import { Button, Icon, Item, List, Segment } from "semantic-ui-react";
 import { Quiz } from "../../../app/models/quiz";
 
 interface Props {
@@ -7,11 +7,13 @@ interface Props {
   selectQuiz: (id: number) => void;
 }
 
+
 export default function QuizList({ quizzes, selectQuiz}: Props) {
   return (
-    <Segment horizontal inverted color="violet" >
-      <List horizontal>
-      <Item.Group devided font-family="Courier New,monospace"  border='5px'>
+    <Segment   horizontal='true'  inverted color="violet" >
+      
+      
+      <Item.Group  font-family="Courier New,monospace"  border='5px' >
         {quizzes.map((quiz) => (
           <Item key={quiz.id}>
             <div className="QuizCards" >
@@ -39,13 +41,14 @@ export default function QuizList({ quizzes, selectQuiz}: Props) {
                 {quiz.title} 
                 </div>
               </Item.Header>
-              <Item.Extra fluid>
+              <Item.Extra fluid margin={0}>
                 <Button onClick={() => selectQuiz(quiz.id)}
                 fluid
                 icon
                 labelPosition="right"
                 color="pink"
                 size="huge"
+                
                 >
                 <Icon name="play"  />
                   Play Quiz
@@ -56,7 +59,8 @@ export default function QuizList({ quizzes, selectQuiz}: Props) {
           </Item>
         ))}
       </Item.Group>
-      </List>
+     
+     
     </Segment>
   );
 }

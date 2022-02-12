@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Domain;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 namespace Application.Quizzes
@@ -25,7 +26,13 @@ namespace Application.Quizzes
             }
             public async Task<Quiz> Handle(Query request, CancellationToken cancellationToken)
             {
-                return await _context.Quizzes.FindAsync(request.Id);
+                 
+                var quizzes =await _context.Quizzes
+                .Include(q => q.Questions)
+                .ToListAsync();
+               return await _context.Quizzes.FindAsync(request.Id);
+            
+               
             }
         }
     }

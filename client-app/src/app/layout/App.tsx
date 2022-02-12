@@ -6,6 +6,7 @@ import React, { Fragment, useEffect, useState } from 'react';
  import WelcomeHeader from './WelcomeHeader';
 import agent from '../api/agent';
 import LoadingComponent from './LoadingComponent';
+import { Category } from '../models/category';
  
  
  function App() {
@@ -14,6 +15,8 @@ import LoadingComponent from './LoadingComponent';
    const[loading, setLoading] = useState(true);
    const[questions, setQuestions] = useState<Question[]>([]);
    const[createMode, setCreateMode ] = useState(false);
+   const[categories, setCategories] = useState<Category[]>([]);
+  
   
  
    useEffect(() =>{
@@ -23,11 +26,21 @@ import LoadingComponent from './LoadingComponent';
 })
    }, [])
 
+
+   useEffect(() =>{
+    agent.Categories.list().then(response =>{
+    setCategories(response);
+    setLoading(false);
+})
+  }, [])
+
    
  
    function handleSelectQuiz(id:number){
      setSelectedQuiz(quizzes.find(x =>x.id === id));
    }
+
+   
  
    function handleCancelSelectedQuiz(){
      setSelectedQuiz(undefined);
@@ -39,6 +52,16 @@ import LoadingComponent from './LoadingComponent';
   function handleFormClose(){
     setCreateMode(false);
   }
+
+  function handleCreateQuiz(quiz: Quiz){
+    quiz.id
+    ?setQuizzes([...quizzes.filter(x =>x.id !== quiz.id),quiz])
+    : setQuizzes([...quizzes, {...quiz, id: Number()}]);
+    setCreateMode(false);
+    setSelectedQuiz(quiz);
+  } 
+
+  
    
    if(loading) return <LoadingComponent content='Loading app' />
    return (
@@ -58,6 +81,7 @@ import LoadingComponent from './LoadingComponent';
          
        <Container style={{marginTop:'1em' }}>
         <QuizDashboard 
+        categories={categories}
         quizzes={quizzes}
         selectedQuiz={selectedQuiz}
         selectQuiz={handleSelectQuiz}
@@ -66,6 +90,10 @@ import LoadingComponent from './LoadingComponent';
         createMode={createMode}
         openForm={handleFormOpen}
         closeForm={handleFormClose}
+        createQuiz={handleCreateQuiz}
+
+        
+  
          />
        </Container>
        </body>

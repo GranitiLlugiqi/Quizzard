@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
-import {Category, Question, Quiz} from '../models/quiz';
+import { Category } from '../models/category';
+import { Question, Quiz} from '../models/quiz';
 
 
 const sleep = (delay: number) => {
